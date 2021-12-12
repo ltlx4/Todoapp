@@ -1,0 +1,14 @@
+
+{% extends 'base.html' %}
+{% block content %}
+    <div class="text-center">
+        <h2>Task: {{ task }}</h2>
+        <h3>Desciption: {{ task.description }}</h3>
+        <a class="btn btn-secondary"href="{% url 'update-task' task.id%}">Edit</a>
+        <form action="{% url 'delete-task' task.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger"name="delete" value="Delete">
+
+        </form>
+    </div>
+{% endblock content %}

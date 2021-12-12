@@ -1,0 +1,65 @@
+* {
+    font-family: 'Roboto Mono', monospace;
+}
+
+body {
+    background-image: url('https://thumbs.dreamstime.com/b/todo-list-seamless-pattern-universal-background-66678083.jpg');
+}
+
+.container {
+    box-shadow: 2px 2px 13px -4px rgba(0,0,0,1);
+    max-width: 40% !important;
+    margin-top: 3.3em;
+    background: whitesmoke;
+    border-radius: 10px;
+    
+}
+
+.top-bar {
+    padding: 1.2em 0 0 .3em;
+}
+
+
+.controls input {
+    margin: .2em;
+}
+
+
+form.bootstrap {
+    padding: 1em;
+}
+
+.control-group {
+    padding: .4em;
+}
+
+.table tr td:not(:first-child) {
+    width: 15%;
+}
+
+.table tfoot tr td {
+    padding: 1em 0 .2em 0;
+    border-bottom-width: 0;
+}
+
+.form-control {
+    width: 50% !important;
+    display: inline !important;
+}
+
+table a {
+    text-decoration: none;
+    color: black;
+    
+}
+
+#id_title{
+    width: 60%;
+    height: 2.3em;
+    border-radius: 5px;
+}
+
+textarea#id_description {
+    height: 8em;
+    border-radius: 5px;
+}

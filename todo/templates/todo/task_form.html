@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<h1 class="pt-2">Task Form</h1>
+
+<form action="" method="post" class="text-center">
+    {% csrf_token %}
+    {{form|crispy}}
+    <input class="col-md-5 btn btn-success  mb-3"type="submit" name="save" value="Save Task">
+    <a href="{% url 'tasks' %}" class="col-md-5 btn btn-danger mb-3">Go Back</a>
+</form>
+{% endblock %}

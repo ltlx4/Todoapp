@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form action="{% url 'register' %}" method="post" autocomplete="off" class="bootstrap">
+    <h1 class="navbar-brand px-1 pt-4">Register</h1>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input class="ms-2 mb-2 btn btn-primary" type="submit" value="Register">
+
+    <p class="my-2">Do have an account already? <a href="{% url 'login' %}">Login</a></p>
+</form>
+{% endblock %}

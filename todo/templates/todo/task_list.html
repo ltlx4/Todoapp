@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row top-bar">
+        {% if request.user.is_authenticated %}
+            <p class="col-sm"> {{ request.user}}</p>
+            <a class="col-sm-2" href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+        <hr>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md mx-auto">
+            <div class="text-center">
+                <h2>My Todolist</h2>
+                
+                <form action="" method="get" class="form-inline">
+                    {% csrf_token %}
+                    <input class="form-control" name="search-area" type="search" placeholder="Search" aria-label="Search">
+                    <input class="btn btn-outline-success my-2 my-sm-0"type="submit" value="Search">
+
+                </form>
+            </div>
+            <table class="table table-hover">
+                <tr>
+                    <th>Tasks</th>
+                    {% for task in tasks %}
+                    
+                    <tr> 
+                        <td>
+                            <a href="{% url 'task-detail' task.id %}">{{forloop.counter}} - {{task}}</a>
+                        </td>
+                        <td><a class="btn btn-secondary"href="{% url 'update-task' task.id%}">Edit</a></td>
+                        <td>
+                            <form action="{% url 'delete-task' task.id %}" method="post">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-danger"name="delete" value="Delete">
+                
+                            </form>
+                            {% comment %} <button hx-swap="beforend" hx-target="tr" hx-confirm="Are you sure you want to delete {{task}}" hx-post="{% url 'delete-task' task.id%}">Delete</button> {% endcomment %}
+                        </td>
+                    </tr>
+                    {% empty%}
+                    <tr>
+                        <td>No Tasks in your Todolist! </td>
+                    </tr>
+                    {% endfor %}
+
+                    <tfoot>
+                        <td><a class="btn btn-success" href="{% url 'create-task' %}">Add new item</a></td>
+                    </tfoot>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+{% endblock content %}
